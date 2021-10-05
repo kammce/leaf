@@ -25,6 +25,11 @@ int main()
 #endif
 
 #include "lightweight_test.hpp"
+#ifdef BOOST_LEAF_BOOST_AVAILABLE
+#   include <boost/config/workaround.hpp>
+#else
+#   define BOOST_WORKAROUND(a,b) 0
+#endif
 
 namespace leaf = boost::leaf;
 
@@ -50,7 +55,7 @@ int main()
             check );
         BOOST_TEST_EQ(r, 1);
     }
-#if defined(__clang__) || !defined(__GNUC__) || (__GNUC__ + 0) >= 5
+#if !BOOST_WORKAROUND( BOOST_GCC, < 50000 )
     {
         int r = leaf::try_catch(
             []
@@ -74,7 +79,7 @@ int main()
             check );
         BOOST_TEST_EQ(r, 1);
     }
-#if defined(__clang__) || !defined(__GNUC__) || (__GNUC__ + 0) >= 5
+#if !BOOST_WORKAROUND( BOOST_GCC, < 50000 )
     {
         int r = leaf::try_catch(
             []
@@ -98,6 +103,7 @@ int main()
             check );
         BOOST_TEST_EQ(r, 1);
     }
+#if !BOOST_WORKAROUND( BOOST_GCC, < 50000 )
     {
         int r = leaf::try_catch(
             []
@@ -111,5 +117,6 @@ int main()
     }
     return boost::report_errors();
 }
+#endif
 
 #endif

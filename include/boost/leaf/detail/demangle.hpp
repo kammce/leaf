@@ -27,11 +27,11 @@
 #   endif ///
 #endif ///
 
-#if defined( __has_include ) && (!defined( BOOST_GCC ) || (__GNUC__ + 0) >= 5)
+#if defined(__has_include) && ((__GNUC__ + 0) >= 5)
 #   if __has_include(<cxxabi.h>)
 #       define BOOST_LEAF_HAS_CXXABI_H
 #   endif
-#elif defined( __GLIBCXX__ ) || defined( __GLIBCPP__ )
+#elif defined(__GLIBCXX__) || defined(__GLIBCPP__)
 #   define BOOST_LEAF_HAS_CXXABI_H
 #endif
 

@@ -50,6 +50,7 @@ int main()
             check );
         BOOST_TEST_EQ(r, 1);
     }
+#if defined(__clang__) || !defined(__GNUC__) || (__GNUC__ + 0) >= 5
     {
         int r = leaf::try_catch(
             []
@@ -61,6 +62,7 @@ int main()
             check );
         BOOST_TEST_EQ(r, 1);
     }
+#endif
     {
         int r = leaf::try_catch(
             []
@@ -72,6 +74,7 @@ int main()
             check );
         BOOST_TEST_EQ(r, 1);
     }
+#if defined(__clang__) || !defined(__GNUC__) || (__GNUC__ + 0) >= 5
     {
         int r = leaf::try_catch(
             []
@@ -83,6 +86,7 @@ int main()
             check );
         BOOST_TEST_EQ(r, 1);
     }
+#endif
     {
         int r = leaf::try_catch(
             []

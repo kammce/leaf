@@ -115,8 +115,8 @@ int main()
             check );
         BOOST_TEST_EQ(r, 1);
     }
+#endif
     return boost::report_errors();
 }
-#endif
 
 #endif

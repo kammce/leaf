@@ -46,11 +46,25 @@ public:
         {
 #ifndef BOOST_LEAF_NO_EXCEPTIONS
 #   if BOOST_LEAF_STD_UNCAUGHT_EXCEPTIONS
-            if( std::uncaught_exceptions() > uncaught_exceptions_ )
+            if( std::uncaught_exceptions() > uncaught_exceptions_ ) // Are we unwinding due to an exception
 #   else
             if( std::uncaught_exception() )
 #   endif
+            {
+                if( auto p = std::current_exception() ) // Are we inside a catch (e.g. rethrowing a caught exception)
+                    try
+                    {
+                         std::rethrow_exception(std::move(p));
+                    }
+                    catch( error_id const & id )
+                    {
+                        return id.value();
+                    }
+                    catch( ... )
+                    {
+                    }
                 return leaf_detail::new_id();
+            }
 #endif
             return 0;
         }

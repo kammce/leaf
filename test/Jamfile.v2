@@ -68,6 +68,7 @@ run e_errno_test.cpp ;
 run e_LastError_test.cpp ;
 run error_code_test.cpp ;
 run error_id_test.cpp ;
+run exception_on_error_test.cpp ;
 run exception_test.cpp ;
 run exception_to_result_test.cpp ;
 run function_traits_test.cpp ;

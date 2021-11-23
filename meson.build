@@ -136,6 +136,7 @@ if option_enable_unit_tests
 		'e_LastError_test',
 		'error_code_test',
 		'error_id_test',
+		'exception_on_error_test',
 		'exception_test',
 		'exception_to_result_test',
 		'function_traits_test',
